@@ -47,7 +47,7 @@ def parse_arguments(args):
     parser = RedditArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
         description=textwrap.dedent(
-            '''
+            '''\
             A simple Python script to extract comments from a single Reddit
             thread and save them to a CSV file.
 
