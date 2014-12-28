@@ -8,12 +8,15 @@ try:
     import unicodecsv
     import praw
 except ImportError:
-    print '''\
-You're missing some required packages.  Run the following command first:
+    print(textwrap.dedent(
+        '''\
+        You're missing some required packages.  Run the following command first:
 
-    pip install -r requirements.txt
-'''
-    exit(1)
+          pip install -r requirements.txt
+        '''
+    ))
+
+    sys.exit(1)
 
 class RedditArgumentParser(argparse.ArgumentParser):
     def error(self, message):
