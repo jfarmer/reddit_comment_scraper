@@ -62,18 +62,21 @@ def parse_arguments(args):
         '-u', '--username',
         dest='username',
         required=True,
-        help='Your Reddit username')
+        help='Your Reddit username'
+    )
 
     parser.add_argument(
         '-p', '--password',
         dest='password',
         required=True,
-        help='Your Reddit password')
+        help='Your Reddit password'
+    )
 
     parser.add_argument(
         'submission_id',
         type=str,
-        help='A Reddit submission ID')
+        help='A Reddit submission ID'
+    )
 
     return parser.parse_args(args)
 
@@ -81,7 +84,7 @@ def get_csv_filename(submission_id):
     return submission_id + '.csv'
 
 def authenticated_client(username, password):
-    client = praw.Reddit("Comment Scraper 1.0")
+    client = praw.Reddit('Comment Scraper 1.0')
     client.login(username, password)
     return client
 
@@ -98,12 +101,16 @@ def prepare_row(dict):
 
 def write_comment_csv(filename, comments, fieldnames=[]):
     with open(filename, 'w') as csvfile:
-        writer = unicodecsv.DictWriter(csvfile, fieldnames=fieldnames, encoding='utf-8')
+        writer = unicodecsv.DictWriter(
+                    csvfile,
+                    fieldnames=fieldnames,
+                    encoding='utf-8'
+                )
 
         writer.writeheader()
         for comment in comments:
             row_data = filter_dict(comment.__dict__, fieldnames)
             writer.writerow(prepare_row(row_data))
 
-if __name__ == "__main__":
+if __name__ == '__main__':
     main(sys.argv[1:])
