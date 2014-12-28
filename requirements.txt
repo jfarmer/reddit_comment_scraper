@@ -1,2 +1,3 @@
 unicodecsv==0.9.4
 praw==2.1.19
+winshell==0.6
