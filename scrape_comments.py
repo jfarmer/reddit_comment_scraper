@@ -85,7 +85,7 @@ def parse_arguments(args):
     return parser.parse_args(args)
 
 def get_csv_filename(submission_id):
-    return submission_id + '.csv'
+    return "{0}.csv".format(submission_id)
 
 def authenticated_client(username, password):
     client = praw.Reddit('Comment Scraper 1.0')
