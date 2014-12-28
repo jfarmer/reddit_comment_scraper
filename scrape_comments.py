@@ -31,9 +31,13 @@ def main(argv):
 
     client = authenticated_client(options.username, options.password)
 
-    print('Fetching all comments for submission ' + options.submission_id + '.')
-    print('If the submission has a lot of comments this could take a while.')
-    print('When finished, the results will be saved to: ' + csv_filename)
+    print(textwrap.dedent(
+        '''\
+        Fetching all comments for submission '{0}'. This could take a while...
+
+        When finished, the results will be saved to: {1}\
+        '''
+    ).format(options.submission_id, csv_filename))
 
     comments = get_all_submission_comments(client, options.submission_id)
 
