@@ -2,6 +2,7 @@
 
 import sys
 import argparse
+import textwrap
 
 try:
     import unicodecsv
@@ -13,6 +14,12 @@ You're missing some required packages.  Run the following command first:
     pip install -r requirements.txt
 '''
     exit(1)
+
+class RedditArgumentParser(argparse.ArgumentParser):
+    def error(self, message):
+        sys.stderr.write('Error: %s\n' % message)
+        self.print_help()
+        sys.exit(2)
 
 def main(argv):
     options = parse_arguments(argv)
@@ -34,7 +41,20 @@ def main(argv):
                       'subreddit_id', 'link_id', 'body'])
 
 def parse_arguments(args):
-    parser = argparse.ArgumentParser(description='Scrape Reddit comments')
+    parser = RedditArgumentParser(
+        formatter_class=argparse.RawDescriptionHelpFormatter,
+        description=textwrap.dedent(
+            '''
+            A simple Python script to extract comments from a single Reddit
+            thread and save them to a CSV file.
+
+            Examples:
+              python scrape_comments.py -u farmerje -p waffles123 2qmp46
+              python scrape_comments.py -u username -p password submission_id
+            '''
+        )
+    )
+
     parser.add_argument(
         '-u', '--username',
         dest='username',
