@@ -57,7 +57,7 @@ def parse_arguments(args):
 
             Examples:
               python scrape_comments.py -u farmerje -p waffles123 2qmp46
-              python scrape_comments.py -u username -p password submission_id
+              python scrape_comments.py -u username -p password submission_id\
             '''
         )
     )
