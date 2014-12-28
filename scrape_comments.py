@@ -34,7 +34,7 @@ def main(argv):
                       'subreddit_id', 'link_id', 'body'])
 
 def parse_arguments(args):
-    parser = argparse.ArgumentParser('Scrape Reddit comments')
+    parser = argparse.ArgumentParser(description='Scrape Reddit comments')
     parser.add_argument(
         '-u', '--username',
         dest='username',
