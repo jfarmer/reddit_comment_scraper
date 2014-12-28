@@ -1,8 +1,12 @@
 #!/usr/bin/env python
 
 import sys
+import os
 import argparse
 import textwrap
+
+if sys.platform == 'win32':
+    import winshell
 
 try:
     import unicodecsv
@@ -27,7 +31,7 @@ class RedditArgumentParser(argparse.ArgumentParser):
 def main(argv):
     options = parse_arguments(argv)
 
-    csv_filename = get_csv_filename(options.submission_id)
+    csv_file_path = get_csv_file_path(options.submission_id)
 
     client = authenticated_client(options.username, options.password)
 
@@ -35,13 +39,14 @@ def main(argv):
         '''\
         Fetching all comments for submission '{0}'. This could take a while...
 
-        When finished, the results will be saved to: {1}\
+        When finished, the results will be saved to:
+          {1}\
         '''
-    ).format(options.submission_id, csv_filename))
+    ).format(options.submission_id, csv_file_path))
 
     comments = get_all_submission_comments(client, options.submission_id)
 
-    write_comment_csv(csv_filename, comments,
+    write_comment_csv(csv_file_path, comments,
                       fieldnames=['id', 'link_id', 'parent_id', 'is_root',
                       'created_utc', 'author', 'gilded', 'downs', 'ups',
                       'score', 'is_root', 'author_flair_text', 'subreddit',
@@ -84,9 +89,6 @@ def parse_arguments(args):
 
     return parser.parse_args(args)
 
-def get_csv_filename(submission_id):
-    return "{0}.csv".format(submission_id)
-
 def authenticated_client(username, password):
     client = praw.Reddit('Comment Scraper 1.0')
     client.login(username, password)
@@ -103,8 +105,8 @@ def filter_dict(dict, fields):
 def prepare_row(dict):
     return {k: v for k, v in dict.items()}
 
-def write_comment_csv(filename, comments, fieldnames=[]):
-    with open(filename, 'w') as csvfile:
+def write_comment_csv(file_path, comments, fieldnames=[]):
+    with open(file_path, 'w') as csvfile:
         writer = unicodecsv.DictWriter(
                     csvfile,
                     fieldnames=fieldnames,
@@ -115,6 +117,23 @@ def write_comment_csv(filename, comments, fieldnames=[]):
         for comment in comments:
             row_data = filter_dict(comment.__dict__, fieldnames)
             writer.writerow(prepare_row(row_data))
+
+def get_csv_filename(submission_id):
+    return "{0}.csv".format(submission_id)
+
+def get_csv_file_path(submission_id):
+    return file_data_path(get_csv_filename(submission_id))
+
+def file_data_path(filename):
+    return os.path.join(get_data_directory(), filename)
+
+def get_data_directory():
+    if sys.platform == 'win32':
+        return winshell.folder('desktop')
+    elif sys.platform == 'darwin':
+        return os.path.join(os.environ['HOME'], 'Desktop')
+    else:
+        return os.environ['HOME']
 
 if __name__ == '__main__':
     main(sys.argv[1:])
