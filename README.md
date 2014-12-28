@@ -11,21 +11,50 @@ installation is to use an online development environment like
 
 ## Installing and Running The Script
 
-First, download the script at
-<https://github.com/jfarmer/reddit_comment_scraper/releases/latest>.
+In this part, we assume you are able to open a command prompt and run
+`python --version` without any problems.  If you don't know what those things
+mean, don't know how to do them, or aren't able to do them, please read the
+**Requirements** section below.
+
+Here's how to download, install, and run the Reddit comment scraper.
+
+1.  Download the latest version of the script at
+    <https://github.com/jfarmer/reddit_comment_scraper/releases/latest>.  If
+    you're unsure, download the zip file by clicking the button labeled
+    **Source code (zip)**.
+2.  Open / decompress the zip file.  This should create a directory that begins
+    with `reddit_comment_scraper`.
+3.  Open a command prompt and navigate to this directory with the `cd` command.
+4.  While inside the directory, run the following command to install the
+    required Python packages:
+
+    ```shell-session
+    pip install -r requirements.txt
+    ```
+5.  Scrape some comments by running this while inside the
+    `reddit_comment_scraper` directory:
+
+    ```shell-session
+    python scrape_comments.py -u reddit-username -p reddit-password submission_id
+    ```
+
+Here `reddit-username` and `reddit-password` are your _actual_ Reddit username
+and password, respectively.  `submission_id` is the small, alphanumeric code
+that Reddit uses to uniquely identify submissions.  For example, if the
+submission whose comments you want to scrape has the following url
 
 Next, install the required packages by running this while inside the
 `reddit_comment_scraper` directory:
 
 ```shell-session
-$ pip install -r requirements.txt
+pip install -r requirements.txt
 ```
 
 Finally, scrape some comments by running this while inside the
 `reddit_comment_scraper` directory:
 
 ```shell-session
-$ ./scrape_comments -u reddit-username -p reddit-password submission_id
+python scrape_comments.py -u reddit-username -p reddit-password submission_id
 ```
 
 Here `reddit-username` and `reddit-password` are your _actual_ Reddit username
@@ -38,3 +67,76 @@ http://www.reddit.com/r/pics/comments/2qj3v7
 ```
 
 then the `submission_id` is `2qj3v7`.
+
+## Requirements
+
+This script is written using Python 2.7 and currently depends on two external
+Python packages: `praw` and `unicodecsv`.  Before we install these packages, we
+need to make sure you have Python 2.7 installed correctly.
+
+If you're using a Mac, everything you need is already installed.  If you're
+using Linux, we assume you know what you're doing.
+
+### Installing Python on Windows
+
+1.  **Download and Install Python 2.7**
+
+You can download the latest release of Python 2.7 from python.org, here:
+<https://www.python.org/downloads/windows/>.
+
+If you're using a 64-bit version of Windows, make sure to download the
+installer labeled **Windows x86-64 MSI Installer**.  If you're using a
+32-bit version of Windows, download the the installer labeled **Windows x86
+MSI Installer**. Note the missing **x86** in the name of the 32-bit
+installer.
+
+If you don't know whether you're running a 32-bit or 64-bit version of
+Windows, read _[Is my PC running the 32-bit or 64-bit version of Windows?](http://windows.microsoft.com/en-us/windows7/find-out-32-or-64-bit)_.
+
+**Sanity Check**: if everything installed correctly there should now be
+a `C:\Python27` directory on your computer.
+
+2.  **Adding Python to Window's PATH Variable**
+
+We want to be able to run Python scripts by using the `python` command
+on the Windows command prompt.  By default, Windows doesn't know how to
+find the `python` command.  To fix this, navigate to
+
+```text
+C:\Python27\Tools\Scripts
+```
+
+You should see a list of files with strange names like `analyze_dep`,
+`checkpip`, `diff`, and so on.  These are individual Python scripts.
+
+Towards the bottom of the list you should see a script named `win_add2path`.
+Double-click that file to run it.  You will see a window appear briefly on
+screen and then disappear — this is normal!
+
+3.  **Restart Your Computer**
+
+After you've installed Python 2.7 and run the `win_add2path` script, restart
+your computer.
+
+4.  **Verifying Your Python Installation**
+
+We'll be running the script from the Windows Command Prompt.  If you don't
+know how to open a new command prompt read Microsoft's [Command Prompt:
+Frequently Asked Questions](http://windows.microsoft.com/en-us/windows/command-prompt-faq).
+
+After opening a new command prompt, run the following command:
+
+```shell-session
+python --version
+```
+
+If everything is installed correctly you should see the current version
+of Python printed out to the screen, e.g., `Python 2.7.9`.  If you see an
+error along the lines of
+
+```text
+'python' is not recognized as an internal or external command
+```
+
+then something is wrong with your Python installation.  Re-read the
+instructions above.
