@@ -14,7 +14,7 @@ installation is to use an online development environment like
 In this part, we assume you are able to open a command prompt and run
 `python --version` without any problems.  If you don't know what those things
 mean, don't know how to do them, or aren't able to do them, please read the
-**Requirements** section below.
+**[Requirements](#requirements)** section below.
 
 To install the script, run the following from the command line:
 
