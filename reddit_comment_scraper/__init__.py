@@ -39,6 +39,9 @@ def main():
                       'score', 'is_root', 'author_flair_text', 'subreddit',
                       'subreddit_id', 'link_id', 'body'])
 
+def get_script_name():
+    return os.path.basename(sys.argv[0])
+
 def parse_arguments(args):
     parser = RedditArgumentParser(
         formatter_class=argparse.RawDescriptionHelpFormatter,
@@ -48,10 +51,10 @@ def parse_arguments(args):
             thread and save them to a CSV file.
 
             Examples:
-              python scrape_comments.py -u farmerje -p waffles123 2qmp46
-              python scrape_comments.py -u username -p password submission_id\
+              {0} -u farmerje -p waffles123 2qmp46
+              {0} -u username -p password submission_id\
             '''
-        )
+        ).format(get_script_name())
     )
 
     parser.add_argument(
