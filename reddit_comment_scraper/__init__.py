@@ -131,7 +131,7 @@ def get_windows_desktop_folder():
 
     buf = ctypes.create_unicode_buffer(ctypes.wintypes.MAX_PATH)
     ctypes.windll.shell32.SHGetFolderPathW(
-        0, CSIDL_PERSONAL,
+        0, CSIDL_DESKTOP,
         0, SHGFP_TYPE_CURRENT,
         buf
     )
