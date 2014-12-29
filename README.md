@@ -16,45 +16,23 @@ In this part, we assume you are able to open a command prompt and run
 mean, don't know how to do them, or aren't able to do them, please read the
 **Requirements** section below.
 
-Here's how to download, install, and run the Reddit comment scraper.
-
-1.  Download the latest version of the script at
-    <https://github.com/jfarmer/reddit_comment_scraper/releases/latest>.  If
-    you're unsure, download the zip file by clicking the button labeled
-    **Source code (zip)**.
-2.  Open / decompress the zip file.  This should create a directory that begins
-    with `reddit_comment_scraper`.
-3.  Open a command prompt and navigate to this directory with the `cd` command.
-4.  While inside the directory, run the following command to install the
-    required Python packages:
-
-    ```shell-session
-    pip install -r requirements.txt
-    ```
-5.  Scrape some comments by running this while inside the
-    `reddit_comment_scraper` directory:
-
-    ```shell-session
-    python scrape_comments.py -u reddit-username -p reddit-password submission_id
-    ```
-
-Here `reddit-username` and `reddit-password` are your _actual_ Reddit username
-and password, respectively.  `submission_id` is the small, alphanumeric code
-that Reddit uses to uniquely identify submissions.  For example, if the
-submission whose comments you want to scrape has the following url
-
-Next, install the required packages by running this while inside the
-`reddit_comment_scraper` directory:
+To install the script, run the following from the command line:
 
 ```shell-session
-pip install -r requirements.txt
+pip install reddit_comment_scraper
 ```
 
-Finally, scrape some comments by running this while inside the
-`reddit_comment_scraper` directory:
+You should now have a `scrape_comments` command available.  To see the various
+ways to use the command run
 
 ```shell-session
-python scrape_comments.py -u reddit-username -p reddit-password submission_id
+scrape_comments --help
+```
+
+To scrape a given Reddit thread, run
+
+```shell-session
+scrape_comments -u reddit-username -p reddit-password submission_id
 ```
 
 Here `reddit-username` and `reddit-password` are your _actual_ Reddit username
