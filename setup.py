@@ -24,6 +24,9 @@ setup(
     },
 
     classifiers=[
+        'Development Status :: 4 - Beta',
+        'Natural Language :: English',
+        'Intended Audience :: Science/Research',
         'License :: OSI Approved :: MIT License',
         'Programming Language :: Python :: 2.7',
         'Environment :: Console',
@@ -32,6 +35,6 @@ setup(
         'Operating System :: Microsoft :: Windows :: Windows 8.1',
         'Operating System :: Microsoft :: Windows :: Windows 8',
         'Operating System :: Microsoft :: Windows :: Windows 7',
-        'Operating System :: Microsoft :: Windows :: Windows Vista'
+        'Operating System :: Microsoft :: Windows :: Windows Vista',
     ],
 )
