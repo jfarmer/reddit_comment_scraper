@@ -4,23 +4,12 @@ import sys
 import os
 import argparse
 import textwrap
+import unicodecsv
+import praw
 
 if sys.platform == 'win32':
-    import winshell
+    import ctypes.wintypes
 
-try:
-    import unicodecsv
-    import praw
-except ImportError:
-    print(textwrap.dedent(
-        '''\
-        You're missing some required packages.  Run the following command first:
-
-          pip install -r requirements.txt
-        '''
-    ))
-
-    sys.exit(1)
 
 class RedditArgumentParser(argparse.ArgumentParser):
     def error(self, message):
@@ -129,11 +118,24 @@ def file_data_path(filename):
 
 def get_data_directory():
     if sys.platform == 'win32':
-        return winshell.folder('desktop')
+        return get_windows_desktop_folder()
     elif sys.platform == 'darwin':
         return os.path.join(os.environ['HOME'], 'Desktop')
     else:
         return os.environ['HOME']
+
+def get_windows_desktop_folder():
+    CSIDL_DESKTOP = 0
+    SHGFP_TYPE_CURRENT = 0
+
+    buf = ctypes.create_unicode_buffer(ctypes.wintypes.MAX_PATH)
+    ctypes.windll.shell32.SHGetFolderPathW(
+        0, CSIDL_PERSONAL,
+        0, SHGFP_TYPE_CURRENT,
+        buf
+    )
+
+    return buf.value
 
 if __name__ == '__main__':
     main(sys.argv[1:])
