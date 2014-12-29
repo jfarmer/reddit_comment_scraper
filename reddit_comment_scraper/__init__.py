@@ -16,7 +16,7 @@ class RedditArgumentParser(argparse.ArgumentParser):
         sys.exit(2)
 
 def main():
-    options = parse_arguments(sys.argv)
+    options = parse_arguments(sys.argv[1:])
 
     csv_file_path = get_csv_file_path(options.submission_id)
 
