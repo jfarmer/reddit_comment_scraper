@@ -3,14 +3,31 @@ from setuptools import setup
 
 setup(
     name='reddit_comment_scraper',
+    version='2.0.0',
+    description='A simple Reddit-scraping script',
     url='https://github.com/jfarmer/reddit_comment_scraper',
-    version='1.2',
     author='Jesse Farmer',
     author_email='jesse@20bits.com',
     license='MIT',
-    py_modules=['scrape_comments'],
+
+    packages=['reddit_comment_scraper'],
+
     install_requires=[
         'unicodecsv==0.9.4',
         'praw==2.1.19'
-    ]
+    ],
+
+    entry_points={
+        'console_scripts': [
+            'scrape_comments=reddit_comment_scraper:main'
+        ]
+    },
+
+    classifiers=[
+        'License :: OSI Approved :: MIT License',
+        'Programming Language :: Python :: 2.7',
+        'Operating System :: POSIX',
+        'Operating System :: MacOS :: MacOS X',
+        'Operating System :: Microsoft :: Windows :: Windows 7'
+    ],
 )

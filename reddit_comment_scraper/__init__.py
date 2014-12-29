@@ -17,8 +17,8 @@ class RedditArgumentParser(argparse.ArgumentParser):
         self.print_help()
         sys.exit(2)
 
-def main(argv):
-    options = parse_arguments(argv)
+def main():
+    options = parse_arguments(sys.argv)
 
     csv_file_path = get_csv_file_path(options.submission_id)
 
@@ -136,6 +136,3 @@ def get_windows_desktop_folder():
     )
 
     return buf.value
-
-if __name__ == '__main__':
-    main(sys.argv[1:])
