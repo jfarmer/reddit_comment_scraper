@@ -1,2 +1,0 @@
-unicodecsv==0.9.4
-praw==2.1.19
