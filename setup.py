@@ -3,6 +3,7 @@ from setuptools import setup
 
 setup(
     name='reddit_comment_scraper',
+    url='https://github.com/jfarmer/reddit_comment_scraper',
     version='1.2',
     author='Jesse Farmer',
     author_email='jesse@20bits.com',
