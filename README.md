@@ -59,62 +59,62 @@ using Linux, we assume you know what you're doing.
 
 1.  **Download and Install Python 2.7**
 
-You can download the latest release of Python 2.7 from python.org, here:
-<https://www.python.org/downloads/windows/>.
+    You can download the latest release of Python 2.7 from python.org, here:
+    <https://www.python.org/downloads/windows/>.
 
-If you're using a 64-bit version of Windows, make sure to download the
-installer labeled **Windows x86-64 MSI Installer**.  If you're using a
-32-bit version of Windows, download the the installer labeled **Windows x86
-MSI Installer**. Note the missing **x86** in the name of the 32-bit
-installer.
+    If you're using a 64-bit version of Windows, make sure to download the
+    installer labeled **Windows x86-64 MSI Installer**.  If you're using a
+    32-bit version of Windows, download the the installer labeled **Windows x86
+    MSI Installer**. Note the missing **x86** in the name of the 32-bit
+    installer.
 
-If you don't know whether you're running a 32-bit or 64-bit version of
-Windows, read _[Is my PC running the 32-bit or 64-bit version of Windows?](http://windows.microsoft.com/en-us/windows7/find-out-32-or-64-bit)_.
+    If you don't know whether you're running a 32-bit or 64-bit version of
+    Windows, read _[Is my PC running the 32-bit or 64-bit version of Windows?](http://windows.microsoft.com/en-us/windows7/find-out-32-or-64-bit)_.
 
-**Sanity Check**: if everything installed correctly there should now be
-a `C:\Python27` directory on your computer.
+    **Sanity Check**: if everything installed correctly there should now be
+    a `C:\Python27` directory on your computer.
 
 2.  **Adding Python to Window's PATH Variable**
 
-We want to be able to run Python scripts by using the `python` command
-on the Windows command prompt.  By default, Windows doesn't know how to
-find the `python` command.  To fix this, navigate to
+    We want to be able to run Python scripts by using the `python` command
+    on the Windows command prompt.  By default, Windows doesn't know how to
+    find the `python` command.  To fix this, navigate to
 
-```text
-C:\Python27\Tools\Scripts
-```
+    ```text
+    C:\Python27\Tools\Scripts
+    ```
 
-You should see a list of files with strange names like `analyze_dep`,
-`checkpip`, `diff`, and so on.  These are individual Python scripts.
+    You should see a list of files with strange names like `analyze_dep`,
+    `checkpip`, `diff`, and so on.  These are individual Python scripts.
 
-Towards the bottom of the list you should see a script named `win_add2path`.
-Double-click that file to run it.  You will see a window appear briefly on
-screen and then disappear — this is normal!
+    Towards the bottom of the list you should see a script named `win_add2path`.
+    Double-click that file to run it.  You will see a window appear briefly on
+    screen and then disappear — this is normal!
 
 3.  **Restart Your Computer**
 
-After you've installed Python 2.7 and run the `win_add2path` script, restart
-your computer.
+    After you've installed Python 2.7 and run the `win_add2path` script, restart
+    your computer.
 
 4.  **Verifying Your Python Installation**
 
-We'll be running the script from the Windows Command Prompt.  If you don't
-know how to open a new command prompt read Microsoft's [Command Prompt:
-Frequently Asked Questions](http://windows.microsoft.com/en-us/windows/command-prompt-faq).
+    We'll be running the script from the Windows Command Prompt.  If you don't
+    know how to open a new command prompt read Microsoft's [Command Prompt:
+    Frequently Asked Questions](http://windows.microsoft.com/en-us/windows/command-prompt-faq).
 
-After opening a new command prompt, run the following command:
+    After opening a new command prompt, run the following command:
 
-```shell-session
-python --version
-```
+    ```shell-session
+    python --version
+    ```
 
-If everything is installed correctly you should see the current version
-of Python printed out to the screen, e.g., `Python 2.7.9`.  If you see an
-error along the lines of
+    If everything is installed correctly you should see the current version
+    of Python printed out to the screen, e.g., `Python 2.7.9`.  If you see an
+    error along the lines of
 
-```text
-'python' is not recognized as an internal or external command
-```
+    ```text
+    'python' is not recognized as an internal or external command
+    ```
 
-then something is wrong with your Python installation.  Re-read the
-instructions above.
+    then something is wrong with your Python installation.  Re-read the
+    instructions above.
