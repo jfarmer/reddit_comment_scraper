@@ -6,7 +6,7 @@ setup(
     version='1.2',
     author='Jesse Farmer',
     author_email='jesse@20bits.com',
-    license='MIT License',
+    license='MIT',
     py_modules=['scrape_comments'],
     install_requires=[
         'unicodecsv==0.9.4',
